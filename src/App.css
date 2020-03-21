@@ -196,3 +196,9 @@ button:active {
   text-align: center;
   font-size: 0.8em;
 }
+
+/* Loading container */
+.loading-container{
+  padding-top: 20%;
+  padding-left: 45%;
+}

@@ -2,6 +2,7 @@ import React from "react";
 import BookShelf from "../components/bookShelf";
 import Button from "../components/shared/Button";
 import PropTypes from "prop-types";
+import ReactLoading from 'react-loading';
 
 const ShelvesView = ({ books, isLoadingBooks, onChange }) => {
   const currentlyReadingBooks = books.filter(
@@ -18,7 +19,9 @@ const ShelvesView = ({ books, isLoadingBooks, onChange }) => {
       <div className="list-books-content">
         <div>
           {isLoadingBooks ? (
-            <h1>Loading...</h1>
+            <div className="loading-container">
+              <ReactLoading type={'bars'} color={'green'} height={'20%'} width={'20%'} />
+            </div>
           ) : (
             <>
               <BookShelf
