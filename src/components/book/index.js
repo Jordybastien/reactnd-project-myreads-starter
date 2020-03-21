@@ -12,7 +12,11 @@ const Book = ({ bookInfo, onChange }) => {
             style={{
               width: 128,
               height: 192,
-              backgroundImage: `url(${bookInfo.imageLinks.smallThumbnail})`
+              backgroundImage: `url(${
+                bookInfo.imageLinks
+                  ? bookInfo.imageLinks.smallThumbnail
+                  : bookInfo.previewLink
+              })`
             }}
           ></div>
           <Select

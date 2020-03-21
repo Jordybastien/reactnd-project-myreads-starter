@@ -17,7 +17,7 @@ class SearchView extends Component {
    */
   handleInput = query => {
     this.setState({
-      searchText: query.trim()
+      searchText: query
     });
   };
 
@@ -29,7 +29,6 @@ class SearchView extends Component {
       clearSearch
     } = this.props;
     const { searchText } = this.state;
-
     return (
       <div className="search-books">
         <div className="search-books-bar">
@@ -48,7 +47,7 @@ class SearchView extends Component {
         </div>
         <div className="search-books-results">
           <ol className="books-grid">
-            {searchResults && searchText ? (
+            {searchResults.length && searchText ? (
               searchResults.map(book => (
                 <Book
                   bookInfo={book}

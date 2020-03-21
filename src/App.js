@@ -59,14 +59,15 @@ class BooksApp extends React.Component {
   searchBook = query => {
     BooksAPI.search(query).then(result => {
       const { books } = this.state;
-      Array.isArray(result) &&
-        this.setState({
-          searchResults: this.mergeBooks(result, books)
-        });
+      Array.isArray(result)
+        ? this.setState({
+            searchResults: this.mergeBooks(result, books)
+          })
+        : this.clearSearchResult();
     });
   };
 
-    /**
+  /**
    * @description This is the function that updates the search result to make sure
    *  every thing is up to date between the search View and shelves view
    * @param  {searchResults} searchResults Array of the search results
@@ -75,12 +76,10 @@ class BooksApp extends React.Component {
    * with the appropriate book shelf
    */
   mergeBooks = (searchResults, books) => {
-    return (
-      searchResults.map(element => {
-        const found = books.find(book => book.id === element.id);
-        return found ? found : element;
-      })
-    );
+    return searchResults.map(searchedBook => {
+      const found = books.find(book => book.id === searchedBook.id);
+      return found ? found : searchedBook;
+    });
   };
 
   /**
